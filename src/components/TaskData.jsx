@@ -1,13 +1,15 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
+import {ThemeContext} from '../contextAPI/ThemeContext.jsx'
 import { MdDeleteForever } from "react-icons/md";
 import { IoIosCheckboxOutline } from "react-icons/io";
 const TaskData = ({ task, deleteTask }) => {
-    const [task_complete,setTask_complete]= useState(task.completed);
+    // const [task_complete,setTask_complete]= useState(task.completed);
+    const {theme,toggleTheme}= useContext(ThemeContext);
   return (
-    <div className="mb-2 shadow-sm flex justify-between items-start p-2 border bg-white border-gray-200 rounded-md">
+    <div className={`mb-2 shadow-sm flex justify-between items-start p-2 border  border-gray-200  rounded-md ${theme==='dark'?"bg-gray-800 text-gray-200 border-gray-600":""}`}>
       <div className="text-left">
         <h1 className="text-blue-400">{task.title}</h1>
-        <p className="text-gray-700">{task.description}</p>
+        <p className="">{task.description}</p>
         
       </div>
       <div className="flex gap-2 items-center">
