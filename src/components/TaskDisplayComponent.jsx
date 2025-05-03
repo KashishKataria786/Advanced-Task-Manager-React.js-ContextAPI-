@@ -1,10 +1,12 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import TaskData from "./TaskData";
 import { ThemeContext } from "../contextAPI/ThemeContext";
+import { TaskContext } from "../contextAPI/TaskContext";
 
-const TaskDisplayComponent = ({ tasks, deleteTask, taskComplete }) => {
+const TaskDisplayComponent = () => {
 
   const {theme, toogleTheme}= useContext(ThemeContext);
+  const {tasks} = useContext(TaskContext);
 
   return (
     <div className=" p-2  rounded-sm min-h-[100px]">
@@ -19,7 +21,7 @@ const TaskDisplayComponent = ({ tasks, deleteTask, taskComplete }) => {
             Tasks
           </h1>
           {tasks?.map((item, index) => {
-            return <TaskData key={index} task={item} deleteTask={deleteTask} taskComplete={taskComplete} />;
+            return <TaskData key={index} task={item} />;
           })}
         </div>
       )}

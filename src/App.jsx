@@ -4,54 +4,26 @@ import './App.css';
 import TaskDisplayComponent from './components/TaskDisplayComponent';
 import { ThemeContext } from './contextAPI/ThemeContext';
 import { ToastContainer, toast } from 'react-toastify';
+import { TaskContext } from './contextAPI/TaskContext';
 function App() {
 
   const {theme, toggleTheme}= useContext(ThemeContext);
-  const [tasks, setTasks] = useState(() => {
-
-
-    const storedTasks = localStorage.getItem('tasks');
-    return storedTasks ? JSON.parse(storedTasks) : [];
-  });
-
+  const {tasks, addTask}= useContext(TaskContext);
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
 
-    const addTask = () => {
-      if (!title || !description) return;
 
-      const newTask = {
-        id: uuidv4(),
-        title,
-        description,
-        completed: false,
-      };
-
-      const updatedTasks = [...tasks, newTask];
-      setTasks(updatedTasks);
+  const handleSubmit = (e) => {
+    if (title && description) {
+      addTask({ title, description });
       setTitle('');
       setDescription('');
-      toast("Task Added Successfully")
-    };
-
-    const deleteTask = (id)=>{
-      setTasks(tasks.filter((task)=>task.id != id));
-      toast("Task Deleted Successfully");
+    }else{
+      toast("Dont leave empty Credentials");
+      return;
     }
+  };
 
-    const taskComplete = (id)=>{
-
-      setTasks((prevTasks) =>
-        prevTasks.map((task) =>
-          task.id === id ? { ...task, completed: !task.completed } : task
-        )
-      ) 
-    }
-
-    
-  useEffect(() => {
-    localStorage.setItem('tasks', JSON.stringify(tasks));
-  }, [tasks]);  
 
   return (
     <>
@@ -84,7 +56,7 @@ function App() {
           rows="7"
         />
         <button
-          onClick={addTask}
+          onClick={handleSubmit}
           className="bg-blue-600 border border-blue-600 p-2 rounded-full text-white hover:bg-white hover:text-blue-600"
         >
           Add Task!
@@ -92,7 +64,7 @@ function App() {
       </div>
       </div>
 
-      <TaskDisplayComponent tasks={tasks} deleteTask={deleteTask} taskComplete={taskComplete}/>
+      <TaskDisplayComponent tasks={tasks} />
       </div>
     </>
   );
