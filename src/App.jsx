@@ -37,10 +37,22 @@ function App() {
       setTasks(tasks.filter((task)=>task.id != id));
     }
 
+    const taskComplete = (id)=>{
+      console.log("Strted");
+      setTasks((prevTasks) =>
+        prevTasks.map((task) =>
+          task.id === id ? { ...task, completed: !task.completed } : task
+        )
+      )
+      // localStorage.setItem("tasks", tasks);
+      console.log("Ended");
+
+    }
+
     
   useEffect(() => {
     localStorage.setItem('tasks', JSON.stringify(tasks));
-  }, [tasks]);
+  }, [tasks]);  
 
   return (
     <>
@@ -53,11 +65,11 @@ function App() {
     </button>
     </div>
     
-    <h1 className="text-5xl dark:text-xl text-blue-600 font-semibold">Advanced Task Manager</h1>
-    <div className={`w-full border p-3 grid grid-cols-2 gap-1 shadow ${theme=='dark'? "bg-gray-800 text-gray-100 ":"bg-white  border-gray-100"}`}>
+    <h1 className="my-5 mdtext-2xl md:text-5xl text-blue-600 font-semibold">Advanced Task Manager</h1>
+    <div className={`w-full border p-3 md:grid grid-cols-2 gap-1 shadow ${theme=='dark'? "bg-gray-800 text-gray-100 ":"bg-white  border-gray-100"}`}>
       <div>
       <div className={` flex flex-col gap-3 m-4 rounded-sm px-3 py-5 border ${theme==='dark'?"border-gray-600":"border-gray-200"} shadow-sm`}>
-        <h5 className={`text-left font-semibold ${theme ==='dark' ? "text-blue-500":"text-black"}`}>Add a New Task</h5>
+        <h5 className={`text-left text-2xl font-semibold ${theme ==='dark' ? "text-blue-500":"text-black"}`}>Add a New Task</h5>
         <input
           value={title}
           onChange={(e) => setTitle(e.target.value)}
@@ -69,6 +81,7 @@ function App() {
           onChange={(e) => setDescription(e.target.value)}
           className={`p-2 border  text-blue-500 ${theme ==='dark' ? "border-gray-600":"border-gray-200  "}`}
           placeholder="Add Description"
+          rows="7"
         />
         <button
           onClick={addTask}
@@ -79,7 +92,7 @@ function App() {
       </div>
       </div>
 
-      <TaskDisplayComponent tasks={tasks} deleteTask={deleteTask}/>
+      <TaskDisplayComponent tasks={tasks} deleteTask={deleteTask} taskComplete={taskComplete}/>
       </div>
     </>
   );

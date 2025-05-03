@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import TaskData from "./TaskData";
 import { ThemeContext } from "../contextAPI/ThemeContext";
 
-const TaskDisplayComponent = ({ tasks, deleteTask }) => {
+const TaskDisplayComponent = ({ tasks, deleteTask, taskComplete }) => {
 
   const {theme, toogleTheme}= useContext(ThemeContext);
 
@@ -19,7 +19,7 @@ const TaskDisplayComponent = ({ tasks, deleteTask }) => {
             Tasks
           </h1>
           {tasks?.map((item, index) => {
-            return <TaskData key={index} task={item} deleteTask={deleteTask} />;
+            return <TaskData key={index} task={item} deleteTask={deleteTask} taskComplete={taskComplete} />;
           })}
         </div>
       )}
