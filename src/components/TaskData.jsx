@@ -1,7 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { ThemeContext } from "../contextAPI/ThemeContext.jsx";
 import { MdDeleteForever } from "react-icons/md";
-import { IoIosCheckboxOutline } from "react-icons/io";
 import { IoCheckmarkDoneCircle ,IoCheckmarkDoneCircleOutline } from "react-icons/io5";
 
 

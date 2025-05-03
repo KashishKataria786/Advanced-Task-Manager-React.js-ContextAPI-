@@ -3,7 +3,7 @@ import { v4 as uuidv4 } from 'uuid';
 import './App.css';
 import TaskDisplayComponent from './components/TaskDisplayComponent';
 import { ThemeContext } from './contextAPI/ThemeContext';
-
+import { ToastContainer, toast } from 'react-toastify';
 function App() {
 
   const {theme, toggleTheme}= useContext(ThemeContext);
@@ -31,22 +31,21 @@ function App() {
       setTasks(updatedTasks);
       setTitle('');
       setDescription('');
+      toast("Task Added Successfully")
     };
 
     const deleteTask = (id)=>{
       setTasks(tasks.filter((task)=>task.id != id));
+      toast("Task Deleted Successfully");
     }
 
     const taskComplete = (id)=>{
-      console.log("Strted");
+
       setTasks((prevTasks) =>
         prevTasks.map((task) =>
           task.id === id ? { ...task, completed: !task.completed } : task
         )
-      )
-      // localStorage.setItem("tasks", tasks);
-      console.log("Ended");
-
+      ) 
     }
 
     
@@ -56,10 +55,11 @@ function App() {
 
   return (
     <>
+    <ToastContainer/>
     <div className='fixed top-0 left-0 p-3 '>
     <button
       onClick={toggleTheme}
-      className="p-2  rounded bg-gray-200 dark:bg-gray-700 text-black dark:text-white"
+      className={`p-2  font-semibold   rounded bg-gray-200 ${theme==='dark'?"text-white bg-gray-800" :""} text-black dark:e`}
     >
       {theme === 'dark' ? 'Light' : 'Dark'} Mode
     </button>
