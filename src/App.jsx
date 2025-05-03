@@ -5,7 +5,7 @@ import TaskDisplayComponent from './components/TaskDisplayComponent';
 import { ThemeContext } from './contextAPI/ThemeContext';
 import { ToastContainer, toast } from 'react-toastify';
 import { TaskContext } from './contextAPI/TaskContext';
-import Header from './components/Header.jsx';
+
 function App() {
 
   const {theme, toggleTheme}= useContext(ThemeContext);
@@ -28,6 +28,8 @@ function App() {
   return (
     <>
     <ToastContainer/>
+
+    
     <div className=" left-0 p-3  rounded-xl">
         <button
           onClick={toggleTheme}
@@ -38,7 +40,7 @@ function App() {
           {theme === "dark" ? "Light" : "Dark"} Mode
         </button>
       </div>
-    <h1 className="my-5 mdtext-2xl md:text-5xl text-blue-600 font-semibold">Advanced Task Manager</h1>
+    <h1 className="my-5 md:my-3 mdtext-2xl md:text-5xl text-blue-600 font-semibold">Advanced Task Manager</h1>
     <div className={`w-full rounded-xl border p-3 md:grid grid-cols-2 gap-1 shadow ${theme=='dark'? "bg-gray-800 text-gray-100 ":"bg-white  border-gray-100"}`}>
       <div>
       <div className={` flex flex-col gap-3 m-4 rounded-sm px-3 py-5 border ${theme==='dark'?"border-gray-600":"border-gray-200"} shadow-sm`}>
@@ -66,7 +68,8 @@ function App() {
       </div>
 
       <TaskDisplayComponent tasks={tasks} />
-      </div>
+      </div>  
+
     </>
   );
 }
