@@ -11,7 +11,7 @@ const TaskData = ({ task}) => {
   const {deleteTask, taskComplete}= useContext(TaskContext);
   return (
     <div
-      className={`mb-2 ${task.completed ? "opacity-30" : ""} shadow-sm flex justify-between items-start p-2 border  border-gray-200  rounded-md ${
+      className={`mb-2 border-l-3 ${task.completed ? "opacity-80  border-l-green-500" : ""} shadow-sm flex justify-between items-start p-2 border  border-gray-200  rounded-md ${
         theme === "dark" ? "bg-gray-800 text-gray-200 border-gray-600" : ""
       }`}
     >
