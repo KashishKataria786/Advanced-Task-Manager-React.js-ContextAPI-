@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import TaskData from "./TaskData";
+import TaskData from "./TaskData.jsx";
 import { ThemeContext } from "../contextAPI/ThemeContext";
 import { TaskContext } from "../contextAPI/TaskContext";
 

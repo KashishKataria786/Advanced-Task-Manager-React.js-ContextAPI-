@@ -7,7 +7,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import { TaskContext } from './contextAPI/TaskContext';
 import TaskManager from './pages/TaskManager';
 import { Route, Routes } from 'react-router-dom';
-import NotFound from './pages/NotFound';
+import NotFound from './pages/NotFound.jsx';
 
 function App() {
 

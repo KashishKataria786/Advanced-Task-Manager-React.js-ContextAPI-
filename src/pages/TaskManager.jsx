@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 // import './App.css';
 import TaskDisplayComponent from '../components/TaskDisplayComponent.jsx';
-import { ThemeContext } from '../contextAPI/ThemeContext';
+import { ThemeContext } from '../contextAPI/ThemeContext.jsx';
 import { ToastContainer, toast } from 'react-toastify';
 import { TaskContext } from '../contextAPI/TaskContext';
 import Layout from '../components/Layout/Layout.jsx';
