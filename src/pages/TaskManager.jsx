@@ -5,7 +5,7 @@ import TaskDisplayComponent from '../components/TaskDisplayComponent.jsx';
 import { ThemeContext } from '../contextAPI/ThemeContext.jsx';
 import { ToastContainer, toast } from 'react-toastify';
 import { TaskContext } from '../contextAPI/TaskContext';
-import Layout from '../components/Layout/Layout.jsx';
+import Layout from '../components/layout/Layout.jsx';
 
 function TaskManager() {
 
