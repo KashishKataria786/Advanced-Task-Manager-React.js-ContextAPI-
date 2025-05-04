@@ -50,7 +50,7 @@ export const TaskProvider = ({ children }) => {
         task.id === id ? { ...task, completed: !task.completed } : task
       )
     ) 
-    toast.info("Task Completed Successfully");
+    
   }
 
   return (
