@@ -21,7 +21,7 @@ const TaskDisplayComponent = () => {
   return (
     <>
  
-    <div className=" p-2  rounded-sm min-h-[100px] text-left">
+    <div className=" p-2  items-start rounded-sm min-h-[100px] text-left">
      
       {tasks.length == 0 ? (
         <div className="flex flex-col border bg-gray-100 h-full rounded-sm border-gray-300 justify-center items-center font-semibold text-gray-500">
@@ -34,11 +34,11 @@ const TaskDisplayComponent = () => {
       <select
         value={filterTask}
         onChange={handleFilterChange}
-        className="mb-4 border rounded px-3 text-white py-2 text-left"
+        className={`mb-4 border rounded ${theme ==='dark'? "text-gray-100":"text-gray-900"}px-3 py-2 text-left`}
       >
-        <option className="text-gray-800" value="all">All</option>
-        <option className="text-gray-800" value="complete">Complete</option>
-        <option className="text-gray-800" value="incomplete">Incomplete</option>
+        <option className="text-gray-800" value="all">All Tasks</option>
+        <option className="text-gray-800" value="complete">Complete Tasks</option>
+        <option className="text-gray-800" value="incomplete">Incomplete Tasks</option>
       </select>
       </div>
           <h1 className={`text-xl font-semibold text-left my-1  ${theme==='dark'?"text-blue-500":"text-gray-800"} `}>
